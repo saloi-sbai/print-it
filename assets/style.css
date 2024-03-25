@@ -125,14 +125,30 @@ header {
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
+	width: 100%;
 }
 #banner .arrow_left {
 	left: 10px;
+	cursor: pointer;
+	position: absolute;
 }
 #banner .arrow_right {
 	right: 10px;
+	cursor: pointer;
+	position: absolute;
 }
+.tagline{
+	padding-top: 130px;
+}
+.carousel__item {
+	background-repeat: no-repeat;
+	background-color: #CD006B;
+	background-size: 100%;
+}
+
+
 /* Gestion des points du carrousel */
+
 .dots {
 	position: absolute;
 	bottom: 40px;
@@ -150,6 +166,20 @@ header {
 .dot_selected {
 	background-color: #fff;
 }
+/* gestion du carousel */
+.carousel {
+	position: relative;
+	width: 100%;
+	height: 470px;
+}
+.carousel__item {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.carousel__item__active {
+	display: block;
+}
 /* Fin du code CSS pour le carousel */
 #banner p {
 	font-family: 'Roboto Slab', sans-serif;
@@ -159,6 +189,7 @@ header {
 	color: white;
 	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 	text-align: center;
+	
 }
 #banner span {
 	display: block;
