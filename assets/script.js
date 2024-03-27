@@ -38,79 +38,51 @@ function updateDots(index) {
 
 // Fonction pour mettre à jour les points indicateurs, l'image et le texte
 function updateCarousel(index, direction) {
-      //correction du bug pour la première et la dernière image
-      if (currentIndex === -1 && direction === 'left') {
-        currentIndex = slides.length - 1;
-    } else if (currentIndex === slides.length && direction === 'right') {
-        currentIndex = 0;
-    }
+  //correction du bug pour la première et la dernière image
+  if (currentIndex === -1 && direction === "left") {
+    currentIndex = slides.length - 1;
+  } else if (currentIndex === slides.length && direction === "right") {
+    currentIndex = 0;
+  }
 
-    // Mettre à jour l'image
-    const imagePath = `assets/images/slideshow/${slides[currentIndex].image}`;
-    bannerImg.src = imagePath;
-    bannerImg.alt = `Slide ${currentIndex + 1}`;
+  // Mettre à jour l'image
+  const imagePath = `assets/images/slideshow/${slides[currentIndex].image}`;
+  bannerImg.src = imagePath;
+  bannerImg.alt = `Slide ${currentIndex + 1}`;
 
-    // Mettre à jour le texte
-    const tagLine = slides[currentIndex].tagLine;
-    document.querySelector('p').innerHTML = tagLine;
+  // Mettre à jour le texte
+  const tagLine = slides[currentIndex].tagLine;
+  document.querySelector("p").innerHTML = tagLine;
 
-    console.log(`Clic sur la flèche ${direction}`);
+  console.log(`Clic sur la flèche ${direction}`);
 }
 
-
-
-
-
-
-
-
-
-
-
-// au chargement de la page la premiere image et le premier point sont selectionnés
-const points = document.querySelectorAll(".dot");
-const carousel__item = document.querySelectorAll(".carousel__item");
-
-points[0].classList.add("dot_selected");
-carousel__item[0].classList.add("carousel__item__active");
-
-let index = 0;
-
-left.addEventListener("click", function () {
-  console.log(left);
-  //je recupere l'indexe actuel, si c'est le premier  on va a la derniere
-  if (index == 0) {
-    index = slides.length - 1;
-  } else {
-    index--;
-  }
-  // pour éviter d'avoir plusieurs image selectionner en meme temps
-  // pour afficher les images
-  carousel__item.forEach((item) => {
-    item.classList.remove("carousel__item__active");
-  });
-  points.forEach((point) => {
-    point.classList.remove("dot_selected");
-  });
-  points[index].classList.add("dot_selected");
-  carousel__item[index].classList.add("carousel__item__active");
+arrowLeft.addEventListener("click", function () {
+  currentIndex = currentIndex - 1;
+  updateCarousel(currentIndex, "left"); // pour mettre a jour l'affichage du carousel
+  updateDots(currentIndex); // Mettre à jour les points indicateurs
 });
 
-right.addEventListener("click", function () {
-  if (index == slides.length - 1) {
-    index = 0;
-  } else {
-    index++;
-  }
-  // pour éviter d'avoir plusieurs image selectionner en meme temps
-  carousel__item.forEach((item) => {
-    item.classList.remove("carousel__item__active");
-  });
-  points.forEach((point) => {
-    point.classList.remove("dot_selected");
-  });
-  points[index].classList.add("dot_selected");
-  carousel__item[index].classList.add("carousel__item__active");
+
+arrowRight.addEventListener('click', function () {
+    currentIndex = (currentIndex + 1) ;
+    updateCarousel(currentIndex, 'right');
+    updateDots(currentIndex); // Mettez à jour les points indicateurs
 });
+
+
+// Afficher la première diapositive au chargement de la page
+updateCarousel(currentIndex, 'démarrage');
+updateDots(currentIndex); // Mettre à jour les points indicateurs pour la première diapositive
+
+
+
+
+
+
+
+
+
+
 
 
