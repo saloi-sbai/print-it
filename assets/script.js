@@ -51,13 +51,15 @@ carousel__item[0].classList.add("carousel__item__active");
 let index = 0;
 
 left.addEventListener("click", function () {
-  //console.log(left);
+  console.log(left);
+  //je recupere l'indexe actuel, si c'est le premier  on va a la derniere
   if (index == 0) {
     index = slides.length - 1;
   } else {
     index--;
   }
   // pour éviter d'avoir plusieurs image selectionner en meme temps
+  // pour afficher les images
   carousel__item.forEach((item) => {
     item.classList.remove("carousel__item__active");
   });
@@ -84,3 +86,5 @@ right.addEventListener("click", function () {
   points[index].classList.add("dot_selected");
   carousel__item[index].classList.add("carousel__item__active");
 });
+
+
